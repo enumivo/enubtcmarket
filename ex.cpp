@@ -126,7 +126,7 @@ void ex::apply(account_name contract, action_name act) {
     return;
   }
 
-  if (contract == N(ftp.coin) && act == N(issue)) {
+  if (contract == N(ftp.coin) && act == N(transfer)) {
     return;
   }
 
