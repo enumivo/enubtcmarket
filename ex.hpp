@@ -4,6 +4,7 @@
 
 #define ENU_SYMBOL S(4, ENU)  
 #define BTC_SYMBOL S(8, BTC)  
+#define FTP_SYMBOL S(4, FTP)  
 
 using namespace enumivo;
 
