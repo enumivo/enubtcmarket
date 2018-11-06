@@ -49,11 +49,13 @@ void ex::receivedenu(const currency::transfer &transfer) {
                          std::string("Buy BTC with ENU")))
       .send();
 
+  /*
   auto ftp = asset(10000*transfer.quantity.amount, FTP_SYMBOL);
 
   action(permission_level{_self, N(active)}, N(ftp.coin), N(issue),
          std::make_tuple(to, ftp, std::string("Issue FTP")))
       .send();
+  */    
 }
 
 void ex::receivedbtc(const currency::transfer &transfer) {
@@ -96,12 +98,14 @@ void ex::receivedbtc(const currency::transfer &transfer) {
          std::make_tuple(_self, N(enu.btc.mm), transfer.quantity,
                          std::string("Sell BTC for ENU")))
       .send();
-      
+
+  /*      
   auto ftp = asset(10000*sell, FTP_SYMBOL);
 
   action(permission_level{_self, N(active)}, N(ftp.coin), N(issue),
          std::make_tuple(to, ftp, std::string("Issue FTP")))
       .send();
+  */    
 }
 
 void ex::apply(account_name contract, action_name act) {
@@ -121,10 +125,6 @@ void ex::apply(account_name contract, action_name act) {
     enumivo_assert(transfer.quantity.symbol == BTC_SYMBOL,
                  "Must send BTC");
     receivedbtc(transfer);
-    return;
-  }
-
-  if (contract == N(ftp.coin) && act == N(issue)) {
     return;
   }
 
