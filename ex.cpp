@@ -29,7 +29,7 @@ void ex::receivedenu(const currency::transfer &transfer) {
   btc_balance = btc_balance/100000000;
 
   //deduct fee
-  received = received * 0.997;
+  received = received * 0.99;
   
   double product = btc_balance * enu_balance;
 
@@ -47,12 +47,6 @@ void ex::receivedenu(const currency::transfer &transfer) {
   action(permission_level{_self, N(active)}, N(enu.token), N(transfer),
          std::make_tuple(_self, N(enu.btc.mm), transfer.quantity,
                          std::string("Buy BTC with ENU")))
-      .send();
-
-  auto ftp = asset(transfer.quantity.amount, FTP_SYMBOL);
-
-  action(permission_level{_self, N(active)}, N(ftp.coin), N(issue),
-         std::make_tuple(to, ftp, std::string("Issue FTP")))
       .send();
 }
 
@@ -77,7 +71,7 @@ void ex::receivedbtc(const currency::transfer &transfer) {
   enu_balance = enu_balance/10000;
 
   //deduct fee
-  received = received * 0.997;
+  received = received * 0.99;
 
   double product = enu_balance * btc_balance;
 
@@ -95,12 +89,6 @@ void ex::receivedbtc(const currency::transfer &transfer) {
   action(permission_level{_self, N(active)}, N(iou.coin), N(transfer),
          std::make_tuple(_self, N(enu.btc.mm), transfer.quantity,
                          std::string("Sell BTC for ENU")))
-      .send();
-
-  auto ftp = asset(10000*sell, FTP_SYMBOL);
-
-  action(permission_level{_self, N(active)}, N(ftp.coin), N(issue),
-         std::make_tuple(to, ftp, std::string("Issue FTP")))
       .send();
 }
 
