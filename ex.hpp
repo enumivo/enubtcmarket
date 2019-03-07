@@ -1,6 +1,7 @@
-#include <enulib/currency.hpp>
 #include <enulib/enu.hpp>
 #include <vector>
+
+#include "currency.hpp"
 
 #define ENU_SYMBOL S(4, ENU)  
 #define BTC_SYMBOL S(8, BTC)  
