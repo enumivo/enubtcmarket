@@ -1,4 +1,4 @@
-//#include <enulib/currency.hpp>
+#include <enulib/currency.hpp>
 #include <enulib/enu.hpp>
 #include <vector>
 
